@@ -8,9 +8,9 @@
   </head>
   <body>
     <h1>Backtracking</h1>
-    <p style="font-size: 20px; color: #858585;">Backtracking is a form of recursion</p>
+    <p style="font-size: 18px; color: #858585;">Backtracking is a form of recursion</p>
     <br />
-    <pre style="font-size: 20px; color: #858585;">
+    <pre style="font-size: 18px; color: #858585;">
       The usual scenario is that you are faced with a number of option, and you must choose one of these. After you make your
       choice choice you will get a new set of options;just what set of options you get depends on what choice you made. This procedure is
       repeated over and over until you reach a final state.If you made a good sequence of choices,your final state is a goal state; if
@@ -29,20 +29,20 @@
       
     </pre>
   
-    <p style="font-size: 20px; color: #858585;">This needs an example</p>
-    <img src="../Assets/Image_root.png" alt="image" />
-    <ol type="1" style="font-size: 20px; color: #858585;">
-      <li>Starting at Root,your options are A and B you choose A</li>
-      <li>At A,your options are C and D. You chose C</li>
-      <li>C is bad. Go back to A</li>
-      <li>At A,you have already tried C,and it failed.Try D</li>
-      <li>D is bad. Go back to A.</li>
-      <li>At A, you have no options left to try.Go back to Root.</li>
-      <li>At Root,you have already tried A.Try B</li>
-      <li>At B,your options are E and F.Try E.</li>
-      <li>E is good.Congratulations.</li>
-    </ol>
-     <pre style="color: #858585; font-size: 20px;">
+    <p style="font-size: 18px; color: #858585;">This needs an example</p>
+    <img src="./Images/Image_root.png" alt="image" />
+    <ol type="1" style="font-size: 18px; color: #858585;">
+      <li>Starting at Root,your options are A and B you choose A</li><br>
+      <li>At A,your options are C and D. You chose C</li><br>
+      <li>C is bad. Go back to A</li><br>
+      <li>At A,you have already tried C,and it failed.Try D</li><br>
+      <li>D is bad. Go back to A.</li><br>
+      <li>At A, you have no options left to try.Go back to Root.</li><br>
+      <li>At Root,you have already tried A.Try B</li><br>
+      <li>At B,your options are E and F.Try E.</li><br>
+      <li>E is good.Congratulations.</li><br>
+    </ol><br>
+    <pre style="color: #858585; font-size: 20px; border: 1px #EDEDED; border-radius: 10px; background-color: #F8F8F8; width: 96%; padding: 10px;">
       In this example we drew a picture of a tree.The tree is an abstract model of the possible sequences of choices we could
       make.There is also a data structure called a tree,but usually we don't have a data structure to tell us what choices we
       have.(If we do have an actual tree data structure,backtracking on it is called depth-first tree searching.)
@@ -50,7 +50,7 @@
       
      </pre>
 <h1>The backtracking algorithm</h1>
-    <pre style="color: #007eb4; font-size: 20px;">
+    <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; margin-top: 25px;">
         
         boolean solve(Node n){
            if n is a leaf node{
@@ -65,47 +65,47 @@
            }
         }
      </pre>
-    <pre style="color: #858585; font-size: 20px;">
+     <pre style="color: #858585; font-size: 20px; border: 1px #EDEDED; border-radius: 10px; background-color: #F8F8F8; width: 96%; padding: 10px;">
       Notice that the algorithm is expressed as a boolean function.This is essential to understanding the algorithm. if 
       solve(n) is true, that means node n is part of a solution--that is,node n is one of the nodes on a path from root though 
       some goal node. We say that n is solvable. if solve(n) is false,then there is no path that inclueds n to any goal node.
    </pre>
 
     <h5>How does this work?</h5>
-    <ul style="color: #858585; font-size: 20px;">
+    <ul style="color: #858585; font-size: 18px;">
       <li>If any child of n is solvable, then n is solvable</li>
       <li>If no child of n is solvable, then n is not solvable</li>
     </ul>
-  <pre style="font-size: 20px; color: #858585;">
+  <pre style="font-size: 18px; color: #858585;">
       Hence, to decide whether any non-leaf node n is solvable (part of a pathto a goal node), all you have to do is test whether any 
       child of n is solvable. This is done recursively, on each child of n. In the above code,  this is done by the lines
 
     </pre>
 
-    <pre style="color: #007eb4; font-size: 20px;">
+    <pre style="color: #007eb4; font-size: 18px;border: 1px solid black; border-radius: 15px; padding: 25px;">
       for each child c of n { 
         if solve(c) succeeds, return true
        }
          return false
     </pre>
-    <pre style="color: #858585; font-size: 20px;">
+    <pre style="color: #858585; font-size: 18px;">
       Eventually the recursion will "bottom" out at a leaf node. If the leaf node is a goal  node, it is solvable; if the leaf node is not a goal 
       node, it is not solvable. This is our base case. In the above code, this is done by the lines
     </pre>
-    <pre style="color: #007eb4; font-size: 20px;">
+    <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 15px;">
       if n is a leaf node {
          if the leaf is a goal node, return true
           else return false
          }
     </pre>
-   <pre style="color: #858585; font-size: 20px;">
+   <pre style="color: #858585; font-size: 18px;">
       The backtracking algorithm is simple but important. You should understand it thoroughly. Another way of stating it is as follows:
       
    </pre>
     <ul>
       <li><h4>To search a tree</h4></li>
     </ul>
-    <ol style="color: #858585; font-size: 20px;">
+    <ol style="color: #858585; font-size: 18px;">
       <li>
       If the tree consists of a single leaf, test whether it is a goal node.
       </li>
@@ -115,11 +115,11 @@
       </li>
     </ol>
     <h3>Non-recursive backtracking, using a stack</h3>
-    <pre style="color: #858585; font-size: 20px;">
+    <pre style="color: #858585; font-size: 18px;">
       Backtracking is a rather typical recursive algorithm, and any recursive algorithm can be rewritten as a stack algorithm. In fact,
       that is how your recursive algorithms are translated into machine or assembly language.
     </pre>
-    <pre style="color: #007eb4; font-size: 20px;">
+    <pre style="color: #007eb4;font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 25px;">
       boolean solve(Node n) { 
         put node n on the stack;
          while the stack is not empty { 
@@ -137,7 +137,7 @@
       }
     }
     </pre>
-    <pre style="color: #858585; font-size: 20px;">
+    <pre style="color: #858585; font-size: 18px;">
       Starting from the root, the only nodes that can be pushed onto the stack are the children of the node currently on the top of the
       stack, and these are only pushed on one child at a time; hence, the nodes on the stack at  all times describe a valid path in the
       tree. Nodes are removed from the stack only when it is known that they have no goal nodes among their descendents. Therefore,
@@ -158,7 +158,7 @@
       Here is the recursive backtracking algorithm,modified slightly to print (in reverse order) the nodes along the  successful path:
   
     </pre>
-    <pre style="color: #007eb4; font-size: 20px;">
+    <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 25px;">
       boolean solve(Node n) {
        if n is a leaf node { 
         if the leaf is a goal node { 
@@ -178,7 +178,7 @@
        }
     </pre>
     <h3>Keeping backtracking simple</h3>
-    <pre style="color: #858585; font-size: 20px;">
+    <pre style="color: #858585; font-size: 18px;">
       All of these versions of the backtracking algorithm are pretty simple, but when applied to a real problem, they can get pretty
       cluttered up with details. Even determining whether the node is a leaf can be complex:
        
@@ -219,7 +219,7 @@
     >
 
     <h3>Example: Tree Search</h3>
-    <pre style="color: #858585; font-size: 20px;">
+    <pre style="color: #858585; font-size: 18px;">
       For starters, let's do the simplest possible example of backtracking, which is searching an actual tree. We will also use the
       simplest kind of tree.
              
@@ -233,7 +233,7 @@
 
           </pre
     >
-    <pre style="color: #007eb4; font-size: 20px;">
+    <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 25px;">
              public class BinaryTree { 
               BinaryTree leftChild = null; 
               BinaryTree rightChild = null;
@@ -249,12 +249,12 @@
           }
           </pre
     >
-    <p style="color: #858585; font-size: 20px;">
+    <p style="color: #858585; font-size: 18px;">
       Next we will create a TreeSearch class, and in it we will define a method  makeTree() which constructs the above binary tree.
      
     </p>
 
-    <pre style="color: #007eb4; font-size: 20px;">
+    <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 25px;">
             static BinaryTree makeTree() { 
               BinaryTree root, a, b, c, d, e, f;
               c = new BinaryTree("C", null, null, false);
@@ -268,15 +268,15 @@
             }
 
           </pre>
-          <p style="color: #858585; font-size: 20px;">Here's a main program to create a binary tree and try to solve it:</p>
-          <pre style="color: #007eb4; font-size: 20px;">
+          <p style="color: #858585; font-size: 18px;">Here's a main program to create a binary tree and try to solve it:</p>
+          <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 25px;">
             public static void main(String args[]) {
              BinaryTree tree = makeTree();
              System.out.println(solvable(tree)); 
           }
           </pre>
-          <p style="color: #858585; font-size: 20px;">And finally, here's the recursive backtracking routine to "solve" the binary tree by finding a goal node.</p>
-           <pre style="font-size: 20px; color: #007eb4;">
+          <p style="color: #858585; font-size: 18px;">And finally, here's the recursive backtracking routine to "solve" the binary tree by finding a goal node.</p>
+           <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 25px;">
              static boolean solvable(BinaryTree node) {
               /* 1 */ if (node == null) return false;
               /* 2 */ if (node.isGoalNode) return true;
@@ -286,8 +286,8 @@
 
               }
            </pre>
-      <p style="font-size: 20px; color: #858585;">Here's what the numbered lines are doing:</p>
-           <ol type="1" style="color: #858585; font-size: 20px;">
+      <p style="font-size: 18px; color: #858585;">Here's what the numbered lines are doing:</p>
+           <ol type="1" style="color: #858585; font-size: 18px;">
        <li>If we are given a null node, it's not solvable. This statement is so that we can call this method with the children of a node, without
            first checking whether those children actually exist.</li>
 
@@ -301,12 +301,12 @@
        <li>Since neither child of node is solvable, node itself is not solvable.</li>
 
            </ol>
-       <p style="font-size: 20px; color: #858585;">This program runs correctly and produces the unenlightening result true.</p>
+       <p style="font-size: 18px; color: #858585;">This program runs correctly and produces the unenlightening result true.</p>
 
-     <pre style="font-size: 20px; color: #858585;">Each time we ask for another node, we have to check if it is null. In the above we put that check as the first thing in solvable. An 
+     <pre style="font-size: 18px; color: #858585;">Each time we ask for another node, we have to check if it is null. In the above we put that check as the first thing in solvable. An 
           alternative would be to check first whether each child exists, and recur only if they do. Here's that alternative version:</pre>
 
-           <pre style="color: #007eb4; font-size: 20px;">
+           <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; padding: 25px;">
                    static boolean solvable(BinaryTree node) {
             
                     if (node.isGoalNode) return true; 
@@ -319,10 +319,10 @@
             
             }
            </pre>
-           <p style="color: #858585; font-size: 20px;">I think the first version is simpler, but the second version is slightly more efficient.</p>
+           <p style="color: #858585; font-size: 18px;">I think the first version is simpler, but the second version is slightly more efficient.</p>
 
       <h3>What are the children?</h3>
-           <pre style="font-size: 20px; color: #858585;">
+           <pre style="font-size: 18px; color: #858585;">
           One of the things that simplifies the above binary tree search is that, at each choice point, you can ignore all the previous 
           choices. Previous choices don't give you any information about what you should do next; as far as you know, both the left and the 
           right child are possible solutions. In many problems, however, you may be able to eliminate children immediately, without 
@@ -337,35 +337,35 @@
             
           There are two ways to do this:
            </pre>
-           <ol type="1" style="font-size: 20; color: #858585;">
+           <ol type="1" style="font-size: 18; color: #858585;">
        <li>Method 1. Try each of the four possible colors, and recur. When you run out of countries, check whether you are at a goal node.</li>
        <li>Method 2. Try only those colors that have not already been used for an adjacent country, and recur. If and when you run out of 
            countries, you have successfully colored the map.</li>
            </ol>
-           <p style="color: #858585; font-size: 20px;">
+           <p style="color: #858585; font-size: 18px;">
           Let's apply each of these two methods to the problem of coloring a checkerboard. This should be easily solvable; after all, a 
           checkerboard only needs two colors.
            </p>
 
       <h5>boolean maplsOK()</h5> 
 
-       <pre style="color: #858585; font-size: 20px;">
+       <pre style="color: #858585; font-size: 18px;">
           Used by method 1 to check(at a leaf node) whether the entire map is colored correctly
       </pre>
 
       <h5>boolean okToColor(in row,int column,int color)</h5>
-       <p style="color: #858585; font-size: 20px;">
+       <p style="color: #858585; font-size: 18px;">
          Used by method 2 to check,at every node,whether there is an adjacent node already colored with the given color,
         </p>
 
      <h5>in[] nextRowAndColumn(int row,int column)</h5>
-      <p style="color: #858585; font-size: 20px;">
-         Used by both methods to find the next "country" (actually the row and column of the next square on the checkboard
+      <p style="color: #858585; font-size: 18px;">
+         Used by both methods to find the next "country" (actually the row and column of the next square on) the checkboard
 
       </p>
-      <p style="font-size: 20px; color: #858585;">Here's the code for method 1:</p>
+      <p style="font-size: 18px; color: #858585;">Here's the code for method 1:</p>
 
-           <pre style="color: #007eb4; font-size: 20px;">
+           <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; padding: 25px;">
                  boolean explore1(int row, int column, int color) { 
               
                   if (row >= NUM_ROWS)return mapIsOK();
@@ -384,11 +384,11 @@
               
               }
            </pre>
-        <p style="color: #858585; font-size: 20px;">
+        <p style="color: #858585; font-size: 18px;">
           And here's the code for method 2:
         </p>
 
-        <pre style="color: #007eb4; font-size: 20px;">
+        <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 25px;">
                  boolean explore2(int row, int column, int color) {
 
                   if (row >= NUM_ROWS)return true;
@@ -409,13 +409,13 @@
         </pre>
 
 
-        <pre style="color: #858585; font-size: 20px;">
+        <pre style="color: #858585; font-size: 18px;">
           Those appear pretty similar, and you might think they are equally good. However, the timing information suggests otherwise:
         </pre>
-        <table border="1" align="center" cellspacing="3px" style="font-size: 20px; color: #858585;">
+        <table border="1" align="center" cellspacing="3px" style="font-size: 18px; color: black;">
           <tr >
             <td width="60px"></td>
-            <td style="background-color:#858585 ;">2 by 3 map</td>
+            <td style="background-color:#858585;">2 by 3 map</td>
             <td style="background-color: #858585;">3 by 3 map</td>
             <td style="background-color: #858585;">3 by 4 map</td>
           </tr>
@@ -433,15 +433,16 @@
           </tr>
         </table>
 
-        <pre style="color: #858585; font-size: 20px;">
+        <pre style="color: #858585; font-size: 18px;">
           The zeros in the above table indicate times too short to measure (less than 1 millisecond). Why this huge difference? Either of 
           these methods could have exponential growth. Eliminating a node automatically eliminates all of its descendents, and this will
           often prevent exponential growth. Conversely, by waiting to check until a leaf node is reached, exponential growth is practically
           guaranteed. If there is any way to eliminate children (reduce the set of choices), do so!
         </pre>
+        <hr>
 
         <h3>Debugging techniques</h3>
-        <pre style="font-size: 20px; color: #858585;">
+        <pre style="font-size: 18px; color: #858585;">
           Often our first try at a program doesn't work, and we need to debug it. Debuggers are helpful, but sometimes we need to fall
           back on inserting print statements. There are some simple tricks to making effective use of print statements. These tricks can be
           applied to any program, but are especially useful when you are trying to debug recursive routines.
@@ -449,7 +450,7 @@
 
         <h3>Trick #1: Indent when you print method entries and exits.</h3>
         
-        <pre style="color: #858585; font-size: 20px;">
+        <pre style="color: #858585; font-size: 18px;">
           Often, the best debugging technique is to print every method call and return (or at least the most important ones). You probably
           want to print, for each method, what parameters it came in with, and what value it leaves with. However, if you just print a long
           list of these, it's hard to match up method exits with their corresponding entries. Indenting to show the level of nesting can help.
@@ -457,17 +458,17 @@
 
         <h3>Trick #2: Use specialized print methods for debugging.</h3>
          
-       <pre style="color: #858585; font-size: 20px;">
+       <pre style="color: #858585; font-size: 18px;">
           Don't clutter up your actual code more than you must. Also, remember that code inserted for debugging purposes can itself
           contain bugs, or (in the worst case) can affect the results, so be very careful with it.
        </pre>
 
-       <pre style="color: #858585; font-size: 20px;">
+       <pre style="color: #858585; font-size: 18px;">
           Here's our debugging code. For this trivial program, there's almost more debugging code than actual code, but in larger programs
           the proportions will be better.
        </pre>
 
-       <pre style="color: #007eb4; font-size: 20px;">
+       <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 25px;">
                  static String indent = ""; 
           
           
@@ -499,11 +500,11 @@
                 }
         </pre>
 
-        <pre style="color: #858585; font-size: 20px;">
+        <pre style="color: #858585; font-size: 18px;">
          To use this code, we modify solvable as follows:
         </pre> 
 
-          <pre style="color: #007eb4; font-size: 20px;">
+          <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 25px;">
                 static boolean solvable(BinaryTree node) {
             
                  enter(node);
@@ -520,11 +521,11 @@
             
             }
           </pre>
-          <p style="color: #858585; font-size: 20px;">
+          <p style="color: #858585; font-size: 18px;">
             And we get these results:
           </p>
 
-          <pre style="color: #858585; font-size: 20px;">
+          <pre style="color: #858585; font-size: 18px;">
                Entering solvable(Root)
                | Entering solvable(A)
                | | Entering solvable(C) 
@@ -550,7 +551,7 @@
 
           <h3>Trick #3: Never discard your debugging statements.</h3>
 
-          <pre style="color: #858585; font-size: 20px;">
+          <pre style="color: #858585; font-size: 18px;">
             Writing debugging statements is programming, too. Often it's as much work to debug
             the debugging statements as it is to debug the actual program. Once your program is working, why throw this code away?
             
@@ -562,7 +563,7 @@
             The simple solution is to make your debugging statements conditional. For example,
           </pre>
 
-          <pre style="color: #007eb4; font-size: 20px;">
+          <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 25px;">
                    static final boolean debugging = false;
             
             
@@ -602,7 +603,7 @@
                 
                    }
           </pre>
-          <pre style="color: #858585; font-size: 20px;">
+          <pre style="color: #858585; font-size: 18px;">
             In industry, actual programs often have multiple flags to control different aspects of debugging. Don't worry too much about
             making your code larger; modern compilers will notice that since the variable debugging is final, it can never be true, and the
             controlled code will be discarded.
@@ -610,7 +611,7 @@
 
           <h3>Trick #4: Create an Exception.</h3>
 
-          <pre style="color: #858585; font-size: 20px;">
+          <pre style="color: #858585; font-size: 18px;">
             If an Exception is thrown, you can get information about just where it happened by sending it the message
             printStackTrace(PrintStream). Since an Exception is an object like any other, you can create and throw your own Exceptions.
             However, Java programmers don't always realize that you can create an Exception without throwing it. For example, the following
@@ -618,12 +619,12 @@
           </pre>
 
 
-          <h3 style="color: #007eb4; font-size: 20px;">new Exception("Checkpoint Charlie").printStackTrace(System.out);</h3>
+          <h3 style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 25px;">new Exception("Checkpoint Charlie").printStackTrace(System.out);</h3>
 
-          <p style="font-size: 20px; color: #858585;">will print out a message something like this, and the program will then continue normally. That is, the above code just acts like a
+          <p style="font-size: 18px; color: #858585;">will print out a message something like this, and the program will then continue normally. That is, the above code just acts like a
              print statement.</p>
 
-          <pre style="color: #007eb4; font-size: 20px;">
+          <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 25px;">
             java.lang.Exception: Checkpoint Charlie
             at TreeSearch.solvable(TreeSearch.java:53)
             at TreeSearch.solvable(TreeSearch.java:57) 
@@ -635,152 +636,152 @@
 
         <h2>Example: Cindy's Puzzle</h2> 
           
-          <p style="color: #858585; font-size: 20px;">
+          <p style="color: #858585; font-size: 18px;">
             I call the following puzzle "Cindy's puzzle" for historical reasons. You have some number n of black marbles and the same number
             of white marbles, and you have a playing board which consists simply of a line of 2n+1 spaces to put the marbles in. Start with 
             the black marbles all at one end (say, the left), the white marbles all at the other end, and a free space in between.
           </p>
           <center>
-          <table border="1" cellpadding="5" style="font-size: 20px; color: #858585;">
+          <table border="1" cellpadding="5" style="font-size: 18px; color: #858585;">
             <tr>
-           <td style="background-color: #858585;"><img src="../black-ball.png" alt="black ball"></td>
-           <td style="background-color: #858585;"><img src="../black-ball.png" alt="black ball"></td>
+           <td style="background-color: #858585;"><img src="./Images/black-ball.png" alt="black ball"></td>
+           <td style="background-color: #858585;"><img src="./Images/black-ball.png" alt="black ball"></td>
            <td style="color: #858585;" width="50px"></td>
-           <td style="color: #858585;"><img src="../white-ball.png" alt="white ball"></td>
-           <td style="color: #858585;"><img src="../white-ball.png" alt="white ball"></td>
+           <td style="color: #858585;"><img src="./Images/white-ball.png" alt="white ball"></td>
+           <td style="color: #858585;"><img src="./Images/white-ball.png" alt="white ball"></td>
            
             </tr>
           </table>
         </center>
 
-        <p style="color: #858585; font-size: 20px;">The goal is to reverse the positions of the marbles:</p>
+        <p style="color: #858585; font-size: 18px;">The goal is to reverse the positions of the marbles:</p>
 
         <center>
-          <table border="1" cellpadding="5" style="font-size: 20px; color: #858585;">
+          <table border="1" cellpadding="5" style="font-size: 18px; color: #858585;">
             <tr>
-              <td style="background-color: #858585;"><img src="../white-ball.png" alt="white-ball"></td>
-              <td style="background-color: #858585;"><img src="../white-ball.png" alt="white-ball"></td>
+              <td style="background-color: #858585;"><img src="./Images/white-ball.png" alt="white-ball"></td>
+              <td style="background-color: #858585;"><img src="./Images/white-ball.png" alt="white-ball"></td>
               <td style="background-color: #858585;" width="50px"></td>
-              <td style="background-color: #858585;"><img src="../black-ball.png" alt="black ball"></td>
-              <td style="background-color: #858585;"><img src="../black-ball.png" alt="black ball"></td>
+              <td style="background-color: #858585;"><img src="./Images/black-ball.png" alt="black ball"></td>
+              <td style="background-color: #858585;"><img src="./Images/black-ball.png" alt="black ball"></td>
             </tr>
           </table>
         </center>
 
-       <p style="color: #424242; font-size: 20px;">The black marbles can only move to the right, and the white marbles can only move to the left (no backing up). At each move, a
+       <p style="color: #424242; font-size: 18px;">The black marbles can only move to the right, and the white marbles can only move to the left (no backing up). At each move, a
           marble can either:</p>
 
-        <ul style="color: #858585; font-size: 20px;">
+        <ul style="color: #858585; font-size: 18px;">
           <li>Move one space ahead, if that space is clear, or</li>
           <li>Jump ahead over exactly one marble of the opposite color, if the space just beyond that marble is clear.</li>
         </ul>
 
-        <p style="font-size: 20px; color: #858585;">For example, you could make the following sequence of moves:</p>
+        <p style="font-size: 18px; color: #858585;">For example, you could make the following sequence of moves:</p>
          <center>
-        <table border="0" cellspacing="10" style="font-size: 20px;color: ;">
+        <table border="0" cellspacing="10" style="font-size: 18px;">
           <tr>
-            <th>Starting Position</th>
+            <td><b>Starting Position</b></td>
             
             <th>
               <table border="1" cellpadding="5">
                   
                 <tr>
-                  <td style="background-color: #858585;"><img src="../black-ball.png" alt="black ball"></td>
-                  <td style="background-color: #858585;"><img src="../black-ball.png" alt="black ball"></td>
+                  <td style="background-color: #858585;"><img src="./Images/black-ball.png" alt="black ball"></td>
+                  <td style="background-color: #858585;"><img src="./Images/black-ball.png" alt="black ball"></td>
                   <td style="color: #858585;" width="50px"></td>
-                  <td style="color: #858585;"><img src="../white-ball.png" alt="white ball"></td>
-                  <td style="color: #858585;"><img src="../white-ball.png" alt="white ball"></td>
+                  <td style="color: #858585;"><img src="./Images/white-ball.png" alt="white ball"></td>
+                  <td style="color: #858585;"><img src="./Images/white-ball.png" alt="white ball"></td>
                 </tr>
               </table>
                </th>
                </tr>
                
                 <tr>
-                  <th>Black moves ahead</th>
+                  <td><b>Black moves ahead</b></td>
                   <th>
                     <table border="1" cellpadding="5">
                         
                       <tr>
-                        <td style="background-color: #858585;"><img src="../black-ball.png" alt="black ball"></td>
-                        <td style="background-color: #858585;"><img src="../black-ball.png" alt="black ball"></td>
+                        <td style="background-color: #858585;"><img src="./Images/black-ball.png" alt="black ball"></td>
+                        <td style="background-color: #858585;"><img src="./Images/black-ball.png" alt="black ball"></td>
                         <td style="color: #858585;" width="50px"></td>
-                        <td style="color: #858585;"><img src="../white-ball.png" alt="white ball"></td>
-                        <td style="color: #858585;"><img src="../white-ball.png" alt="white ball"></td>
+                        <td style="color: #858585;"><img src="./Images/white-ball.png" alt="white ball"></td>
+                        <td style="color: #858585;"><img src="./Images/white-ball.png" alt="white ball"></td>
                       </tr>
                     </table>
                      </th>
             
           </tr>
           <tr>
-            <th>White Jumps:</th>
+            <td><b>White Jumps:</b></td>
             <th>
               <table border="1" cellpadding="5">
                   
                 <tr>
-                  <td style="background-color: #858585;"><img src="../black-ball.png" alt="black ball"></td>
-                  <td style="color: #858585;"><img src="../white-ball.png" alt="white ball"></td>
-                  <td style="background-color: #858585;"><img src="../black-ball.png" alt="black ball"></td>
+                  <td style="background-color: #858585;"><img src="./Images/black-ball.png" alt="black ball"></td>
+                  <td style="color: #858585;"><img src="./Images/white-ball.png" alt="white ball"></td>
+                  <td style="background-color: #858585;"><img src="./Images/black-ball.png" alt="black ball"></td>
                   <td style="color: #858585;" width="50px"></td>
-                  <td style="color: #858585;"><img src="../white-ball.png" alt="white ball"></td>
+                  <td style="color: #858585;"><img src="./Images/white-ball.png" alt="white ball"></td>
                 </tr>
               </table>
                </th>
       
     </tr>
     <tr>
-      <th>Black moves aheads:</th>
+      <td><b>Black moves aheads:</b></td>
       <th>
         <table border="1" cellpadding="5">
             
           <tr>
-            <td style="background-color: #858585;"><img src="../black-ball.png" alt="black ball"></td>
-            <td style="color: #858585;"><img src="../white-ball.png" alt="white ball"></td>
+            <td style="background-color: #858585;"><img src="./Images/black-ball.png" alt="black ball"></td>
+            <td style="color: #858585;"><img src="./Images/white-ball.png" alt="white ball"></td>
             <td style="color: #858585;" width="50px"></td>
-            <td style="background-color: #858585;"><img src="../black-ball.png" alt="black ball"></td> 
-            <td style="color: #858585;"><img src="../white-ball.png" alt="white ball"></td>
+            <td style="background-color: #858585;"><img src="./Images/black-ball.png" alt="black ball"></td> 
+            <td style="color: #858585;"><img src="./Images/white-ball.png" alt="white ball"></td>
           </tr>
         </table>
          </th>
 
 </tr>
 <tr>
-  <th>Black moves ahead</th>
+  <td><b>Black moves ahead</b></td>
   <th>
     <table border="1" cellpadding="5">
         
       <tr>
         <td style="color: #858585;" width="50px"></td>
-        <td style="color: #858585;"><img src="../white-ball.png" alt="white ball"></td>
-        <td style="background-color: #858585;"><img src="../black-ball.png" alt="black ball"></td>
-        <td style="background-color: #858585;"><img src="../black-ball.png" alt="black ball"></td>
-        <td style="color: #858585;"><img src="../white-ball.png" alt="white ball"></td>      
+        <td style="color: #858585;"><img src="./Images/white-ball.png" alt="white ball"></td>
+        <td style="background-color: #858585;"><img src="./Images/black-ball.png" alt="black ball"></td>
+        <td style="background-color: #858585;"><img src="./Images/black-ball.png" alt="black ball"></td>
+        <td style="color: #858585;"><img src="./Images/white-ball.png" alt="white ball"></td>      
       </tr>
     </table>
      </th>
 
 </tr>
 <tr>
-  <th>Black moves ahead</th>
+  <td><b>Black moves ahead</b></td>
   <th>
     <table border="1" cellpadding="5">
         
       <tr>
         <td style="color: #858585;" width="50px"></td>
-        <td style="color: #858585;"><img src="../white-ball.png" alt="white ball"></td>
-        <td style="background-color: #858585;"><img src="../black-ball.png" alt="black ball"></td>
-        <td style="background-color: #858585;"><img src="../black-ball.png" alt="black ball"></td>
-        <td style="color: #858585;"><img src="../white-ball.png" alt="white ball"></td>       
+        <td style="color: #858585;"><img src="./Images/white-ball.png" alt="white ball"></td>
+        <td style="background-color: #858585;"><img src="./Images/black-ball.png" alt="black ball"></td>
+        <td style="background-color: #858585;"><img src="./Images/black-ball.png" alt="black ball"></td>
+        <td style="color: #858585;"><img src="./Images/white-ball.png" alt="white ball"></td>       
       </tr>
     </table>
      </th>
 
 </tr>
 <tr>
-  <th>Stuck!</th>
+  <td><b>Stuck!</b></td>
   </tr>
 </table>
    </center>
-        <pre style="color: #858585; font-size: 20px;">
+        <pre style="color: #858585; font-size: 18px;">
        The backtracking method is named solvable and returns a boolean. In solvable we shall need to check whether we are at a leaf,
         which in this case means a position from which no further moves are possible. This isn't so easy. 
 
@@ -811,19 +812,19 @@
         complication because not every space contains a marble, but at least the spaces (unlike the marbles) stay in one place.
         </pre>
 
-        <pre style="color: #424242; font-size: 20px;">
+        <pre style="color: #424242; font-size: 18px;">
           Now we have a simpler ordering of moves to use in our program. Just check, in order, the 2n+1 spaces of the board. For each 
           space, either zero or one moves is possible. With this understanding, we can write a boolean method canMove(int[] board, int 
           position) which determines whether a move is possible from the given position:
         </pre>
         
-          <ul style="color: #858585; font-size: 20px;">
+          <ul style="color: #858585; font-size: 18px;">
             <li>If the position is empty, no move is possible;</li>
             <li>If the position contains a black marble, the method checks for a move or jump to the right;</li>
             <li>If the position contains a white marble, the method checks for a move or jump to the left.</li>
           </ul>
 
-          <pre style="color: #858585; font-size: 20px;">
+          <pre style="color: #858585; font-size: 18px;">
             We write another method <strong>int[] makeMove(int[] oldBoard, int position)</strong>  that will take a board and a position, make a move from 
             that position, and return as its value a new board. (We could write this somewhat more efficiently by changing the old board, 
             rather than creating a new one, but here we are more concerned with simplicity.) In technical jargon, makeMove is "applicative" 
@@ -834,7 +835,7 @@
             
           </pre>
           
-          <pre style="color: #007eb4; font-size: 20px;">
+          <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 25px;">
             boolean solvable(int[] board) {
               
               if (puzzleSolved(board)) { 
@@ -853,69 +854,70 @@
             }
           </pre>
 
-          <pre style="color: black; font-size: 20px;">
+          <pre style="color: black; font-size: 18px;">
             Along with canMove and makeMove, we are using methods puzzleSolved and printBoard with meanings that should be obvious. 
             
             Here is some output from the program:
           </pre>
-          <ol reversed style="font-size: 20px;">
+          <ol reversed style="font-size: 18px; color: #007eb4;">
             <li>
-              <b>WHITE WHITE WHITE  _______ BLACK BLACK BLACK</b>      
+              <b style="color: black;">WHITE WHITE WHITE  _______ BLACK BLACK BLACK</b>      
             </li>
             <li>
-              <b>WHITE WHITE WHITE BLACK______ BLACK BLACK BLACK</b>
+              <b style="color: black;" >WHITE WHITE WHITE BLACK______ BLACK BLACK </b>
             </li>
             <li>
-              <b>WHITE WHITE ______ BLACK WHITE BLACK BLACK</b>
+              <b style="color: black;">WHITE WHITE ______ BLACK WHITE BLACK BLACK</b>
             </li>
             <li>
-              <b>WHITE ______ WHITE BLACK WHITE BLACK BLACK</b>
+              <b style="color: black;">WHITE ______ WHITE BLACK WHITE BLACK BLACK</b>
             </li>
             <li>
-              <b>WHITE BLACK WHITE ______ WHITE BLACK BLACK</b>
+              <b style="color: black;">WHITE BLACK WHITE ______ WHITE BLACK BLACK</b>
             </li>
              <li>
-             <b>WHITE BLACK WHITE BLACK WHITE _______ </b>
+             <b style="color: black;">WHITE BLACK WHITE BLACK WHITE _______ BLACK </b>
              </li>
              <li>
-              <b>WHITE BLACK WHITE BLACK WHITE BLACK ______</b>
+              <b style="color: black;">WHITE BLACK WHITE BLACK WHITE BLACK ______</b>
              </li>
              <li>
-              <b>WHITE BLACK WHITE BLACK ______ BLACK WHITE</b>
+              <b style="color: black;">WHITE BLACK WHITE BLACK ______ BLACK WHITE</b>
              </li>
              <li>
-              <b>WHITE BLACK _______ BLACK WHITE WHITE BLACK WHITE</b>
+              <b style="color: black;">WHITE BLACK _______ BLACK WHITE WHITE BLACK </b>
              </li>
              <li>
-              <b>______ BLACK WHITE BLACK WHITE BLACK WHITE</b>
+              <b style="color: black;">______ BLACK WHITE BLACK WHITE BLACK WHITE</b>
              </li>
              <li>
-              <b>BLACK ______ WHITE BOLACK WHITE BLACK WHITE</b>
+              <b style="color: black;">BLACK ______ WHITE BOLACK WHITE BLACK WHITE</b>
              </li>
              <li>
-              <b>BLACK BLACK WHITE _______ WHITE BLACK WHITE</b>
+              <b style="color: black;">BLACK BLACK WHITE _______ WHITE BLACK WHITE</b>
              </li>
              <li>
-              <b>BLACK BLACK WHITE BLACK WHITE ______ WHITE </b>
+              <b style="color: black;">BLACK BLACK WHITE BLACK WHITE ______ WHITE </b>
              </li>
               <li>
-                <b>BLACK BLACK WHITE BLACK _____WHITE WHITE</b>
+                <b style="color: black;">BLACK BLACK WHITE BLACK _____WHITE WHITE</b>
               </li>
               <li>
-                <b>BLACK BLACK _______ BLACK WHITE WHITE WHITE</b>
-              </li>
-              <li>BLACK BLACK BLACK _______ WHITE WHITE WHITE</li>
+                <b style="color: black;">BLACK BLACK _______ BLACK WHITE WHITE WHITE</b>
+              </li> 
+              <li>
+                <b style="color: black;"> BLACK BLACK BLACK _______ WHITE WHITE WHITE </b>
+              </li>      
           </ol>
           
-        
-          <div>
-        <pre style="color: #858585; font-size: 20px;">
-          Notice that the solution is given in reverse order: BLACK starts out on the left and WHITE on the right, as in the last
-          line. I've added line numbers to the actual output in order to emphasize this point. Backtracking always produces its 
-          results (sequence of choices) in reverse order; it is up to you, the programmer, to reverse the results again to get 
-          them in the correct order.
+      
+          <pre style="color: #858585; font-size: 20px; border: 1px #EDEDED; border-radius: 10px; background-color: #F8F8F8; width: 96%; padding: 10px;">
+      
+      Notice that the solution is given in reverse order: BLACK starts out on the left and WHITE on the right, as in the last
+      line. I've added line numbers to the actual output in order to emphasize this point. Backtracking always produces its 
+      results (sequence of choices) in reverse order; it is up to you, the programmer, to reverse the results again to get 
+      them in the correct order.
         </pre>
-      </div>
-
+      
   </body>
 </html>
