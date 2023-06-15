@@ -10,24 +10,24 @@
     <h1>Backtracking</h1>
     <p style="font-size: 18px; color: #858585;">Backtracking is a form of recursion</p>
     <br />
-    <pre style="font-size: 18px; color: #858585;">
-      The usual scenario is that you are faced with a number of option, and you must choose one of these. After you make your
-      choice choice you will get a new set of options;just what set of options you get depends on what choice you made. This procedure is
-      repeated over and over until you reach a final state.If you made a good sequence of choices,your final state is a goal state; if
-      you didn't, it isn't.
+  <pre style="font-size: 18px; color: #858585;">
+The usual scenario is that you are faced with a number of option, and you must choose one of these. After you make your
+choice choice you will get a new set of options;just what set of options you get depends on what choice you made. This procedure is
+repeated over and over until you reach a final state.If you made a good sequence of choices,your final state is a goal state; if
+you didn't, it isn't.
 
+
+   
+Conceptually,you start at the root of a tree,the tree probably has some good leaves and some bad leaves and some bad leaves,though it may be that
+the leaves are all good or all bad. You want to get to a good leaf.At each node, beginning with the root,you choose one of its
+children to move to,and you keep this up until you get to a leaf.
       
-      Conceptually,you start at the root of a tree,the tree probably has some good leaves and some bad leaves and some bad leaves,though it may be that
-      the leaves are all good or all bad. You want to get to a good leaf.At each node, beginning with the root,you choose one of its
-      children to move to,and you keep this up until you get to a leaf.
-       
-       
-      Suppose you get to a bad leaf.You can backtrack to continue the search for a good leaf by revoking your most recent choice,
-      and trying out the next option in that set of options.If you run out of options,revoke the choice that got you here,and try
-      another choice at that node.If you end up at the root with no options left,htere are no good leaves to be found.
+    
+Suppose you get to a bad leaf.You can backtrack to continue the search for a good leaf by revoking your most recent choice,
+and trying out the next option in that set of options.If you run out of options,revoke the choice that got you here,and try
+another choice at that node.If you end up at the root with no options left,htere are no good leaves to be found.
       
-      
-    </pre>
+  </pre>
   
     <p style="font-size: 18px; color: #858585;">This needs an example</p>
     <img src="./Images/Image_root.png" alt="image" />
@@ -41,7 +41,9 @@
       <li>At Root,you have already tried A.Try B</li><br>
       <li>At B,your options are E and F.Try E.</li><br>
       <li>E is good.Congratulations.</li><br>
-    </ol><br>
+    </ol>
+    
+    <br>
     <pre style="color: #858585; font-size: 20px; border: 1px #EDEDED; border-radius: 10px; background-color: #F8F8F8; width: 96%; padding: 10px;">
       In this example we drew a picture of a tree.The tree is an abstract model of the possible sequences of choices we could
       make.There is also a data structure called a tree,but usually we don't have a data structure to tell us what choices we
@@ -66,19 +68,22 @@
         }
      </pre>
      <pre style="color: #858585; font-size: 20px; border: 1px #EDEDED; border-radius: 10px; background-color: #F8F8F8; width: 96%; padding: 10px;">
-      Notice that the algorithm is expressed as a boolean function.This is essential to understanding the algorithm. if 
-      solve(n) is true, that means node n is part of a solution--that is,node n is one of the nodes on a path from root though 
-      some goal node. We say that n is solvable. if solve(n) is false,then there is no path that inclueds n to any goal node.
-   </pre>
+   Notice that the algorithm is expressed as a boolean function.This is essential to understanding the algorithm. if 
+   solve(n) is true, that means node n is part of a solution--that is,node n is one of the nodes on a path from root though 
+   some goal node. We say that n is solvable. if solve(n) is false,then there is no path that inclueds n to any goal node.
+      </pre>
+     <br>
 
     <h5>How does this work?</h5>
     <ul style="color: #858585; font-size: 18px;">
       <li>If any child of n is solvable, then n is solvable</li>
       <li>If no child of n is solvable, then n is not solvable</li>
+
     </ul>
-  <pre style="font-size: 18px; color: #858585;">
-      Hence, to decide whether any non-leaf node n is solvable (part of a pathto a goal node), all you have to do is test whether any 
-      child of n is solvable. This is done recursively, on each child of n. In the above code,  this is done by the lines
+
+   <pre style="font-size: 18px; color: #858585;">
+                 Hence, to decide whether any non-leaf node n is solvable (part of a pathto a goal node), all you have to do is test whether any 
+   child of n is solvable. This is done recursively, on each child of n. In the above code,  this is done by the lines
 
     </pre>
 
@@ -89,8 +94,8 @@
          return false
     </pre>
     <pre style="color: #858585; font-size: 18px;">
-      Eventually the recursion will "bottom" out at a leaf node. If the leaf node is a goal  node, it is solvable; if the leaf node is not a goal 
-      node, it is not solvable. This is our base case. In the above code, this is done by the lines
+            Eventually the recursion will "bottom" out at a leaf node. If the leaf node is a goal  node, it is solvable; if the leaf node is not a goal 
+  node, it is not solvable. This is our base case. In the above code, this is done by the lines
     </pre>
     <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 15px;">
       if n is a leaf node {
@@ -138,24 +143,24 @@
     }
     </pre>
     <pre style="color: #858585; font-size: 18px;">
-      Starting from the root, the only nodes that can be pushed onto the stack are the children of the node currently on the top of the
-      stack, and these are only pushed on one child at a time; hence, the nodes on the stack at  all times describe a valid path in the
-      tree. Nodes are removed from the stack only when it is known that they have no goal nodes among their descendents. Therefore,
-      if the root node gets removed (making the stack  empty), there must have been no goal nodes at all, and no solution to the
-      problem.
+  Starting from the root, the only nodes that can be pushed onto the stack are the children of the node currently on the top of the
+  stack, and these are only pushed on one child at a time; hence, the nodes on the stack at  all times describe a valid path in the
+  tree. Nodes are removed from the stack only when it is known that they have no goal nodes among their descendents. Therefore,
+  if the root node gets removed (making the stack  empty), there must have been no goal nodes at all, and no solution to the
+  problem.
       
      
      
       
-      When the stack algorithm terminates successfully, the nodes on  the stack form (in reverse order) a path from the root to a goal
-      node.
+  When the stack algorithm terminates successfully, the nodes on  the stack form (in reverse order) a path from the root to a goal
+  node.
       
 
-      Similarly, when the recursive algorithm finds a goal node, the path  information is embodied (in reverse order) in the sequence of 
-      recursive calls. Thus as the recursion unwinds, the path can be recovered one node  at a time, by (for instance) printing the node
-      at the current level, or  storing it in an array.
+  Similarly, when the recursive algorithm finds a goal node, the path  information is embodied (in reverse order) in the sequence of 
+  recursive calls. Thus as the recursion unwinds, the path can be recovered one node  at a time, by (for instance) printing the node
+  at the current level, or  storing it in an array.
       
-      Here is the recursive backtracking algorithm,modified slightly to print (in reverse order) the nodes along the  successful path:
+  Here is the recursive backtracking algorithm,modified slightly to print (in reverse order) the nodes along the  successful path:
   
     </pre>
     <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 25px;">
@@ -179,60 +184,58 @@
     </pre>
     <h3>Keeping backtracking simple</h3>
     <pre style="color: #858585; font-size: 18px;">
-      All of these versions of the backtracking algorithm are pretty simple, but when applied to a real problem, they can get pretty
-      cluttered up with details. Even determining whether the node is a leaf can be complex:
+ All of these versions of the backtracking algorithm are pretty simple, but when applied to a real problem, they can get pretty
+ cluttered up with details. Even determining whether the node is a leaf can be complex:
        
-      for example, if the path represents a series of moves in a chess endgame problem, the leaves are the checkmate and stalemate 
-      solutions
+ for example, if the path represents a series of moves in a chess endgame problem, the leaves are the checkmate and stalemate 
+ solutions
 
-      To keep the program clean, therefore, tests like this should be buried in methods. In a chess game, for example, you could test
-      whether a node is a leaf by writing a <b>gameOver method</b> (or you could even call it <b>isLeaf).</b> This method would encapsulate all the 
-      ugly details of figuring out whether any possible moves remain. 
+ To keep the program clean, therefore, tests like this should be buried in methods. In a chess game, for example, you could test
+ whether a node is a leaf by writing a <b>gameOver method</b> (or you could even call it <b>isLeaf).</b> This method would encapsulate all the 
+ ugly details of figuring out whether any possible moves remain. 
          
-      Notice that the backtracking altorithms require us to keep track, for each node on the current path, which of its children have 
-      been tried already (so we don't have to try them again). In the above code we made this look simple, by just saying <b>for each child
-      c of n.</b> In reality, it may be difficult to figure out what the possible children are, and there may be no obvious way to step through
-      them. In chess, for example, a node can represent one arrangement of pieces on a chessboard, and each child of that node can 
-      represent the arrangement after some piece has made a legal move. How do you find these children, and how do you keep track 
-      of which ones you've already examined?
+ Notice that the backtracking altorithms require us to keep track, for each node on the current path, which of its children have 
+ been tried already (so we don't have to try them again). In the above code we made this look simple, by just saying <b>for each child
+ c of n.</b> In reality, it may be difficult to figure out what the possible children are, and there may be no obvious way to step through
+ them. In chess, for example, a node can represent one arrangement of pieces on a chessboard, and each child of that node can 
+ represent the arrangement after some piece has made a legal move. How do you find these children, and how do you keep track 
+ of which ones you've already examined?
            
-      The most straightforward way to keep track of which children of the node have been tried is as follows: Upon initial entry to the
-      node (that is, when you first get there from above), make a list of all its children. As you try each child, take it off the list. When
-      the list is empty, there are no remaining untried children, and you can return "failure." This is a simple approach, but it may require
-      quite a lot of additional work. 
+ The most straightforward way to keep track of which children of the node have been tried is as follows: Upon initial entry to the
+ node (that is, when you first get there from above), make a list of all its children. As you try each child, take it off the list. When
+ the list is empty, there are no remaining untried children, and you can return "failure." This is a simple approach, but it may require
+ quite a lot of additional work. 
               
-      There is an easier way to keep track of which children have been tried, if you can define an ordering on the children. If there is an
-      ordering, and you know which child you just tried, you can determine which child to try next.
+ There is an easier way to keep track of which children have been tried, if you can define an ordering on the children. If there is an
+ ordering, and you know which child you just tried, you can determine which child to try next.
                
-      For example, you might be able to number the <b>children 1 through n</b>, and try them in numerical order. Then, if you have just tried
-      <b>child k</b>, you know that you have already tried children 1 through <b>k-1,</b> and you have not yet tried children <b>k+1</b> through <b>n.</b> Or, if you
-      are trying to color a map with just four colors, you can always try <b>red first, then yellow, then green, then blue.</b> If child yellow fails,
-      you know to try child green next. If you are searching a maze, you can try choices in the order left, straight, right <b>(or perhaps
-      north, east, south, west).</b>
+ For example, you might be able to number the <b>children 1 through n</b>, and try them in numerical order. Then, if you have just tried
+ <b>child k</b>, you know that you have already tried children 1 through <b>k-1,</b> and you have not yet tried children <b>k+1</b> through <b>n.</b> Or, if you
+ are trying to color a map with just four colors, you can always try <b>red first, then yellow, then green, then blue.</b> If child yellow fails,
+ you know to try child green next. If you are searching a maze, you can try choices in the order left, straight, right <b>(or perhaps
+ north, east, south, west).</b>
                    
-      It isn't always easy to find a simple way to order the children of a node. <b> In the chess game example,</b> you might number your 
-      pieces (or perhaps the squares of the board) and try them in numerical order; but in addition each piece may also have several
-      moves, and these must also be ordered.
+ It isn't always easy to find a simple way to order the children of a node. <b> In the chess game example,</b> you might number your 
+ pieces (or perhaps the squares of the board) and try them in numerical order; but in addition each piece may also have several
+ moves, and these must also be ordered.
                     
                     
-          </pre
-    >
+          </pre>
 
     <h3>Example: Tree Search</h3>
     <pre style="color: #858585; font-size: 18px;">
-      For starters, let's do the simplest possible example of backtracking, which is searching an actual tree. We will also use the
-      simplest kind of tree.
+ For starters, let's do the simplest possible example of backtracking, which is searching an actual tree. We will also use the
+ simplest kind of tree.
              
-      a binary tree. A binary tree is a data structure composed of nodes. One node is designated as the root node. Each node can reference (point
-      to) zero, one, or two other nodes, which are called its children. The children are referred to as the left child and/or the right child.
-      All nodes are reachable (by one or more steps) from the root node, and there are no cycles. For our purposes, although this is not 
-      part of the definition of a binary tree, we will say that a node might or might not be a goal node, and will contain its name. The 
-      first example in this paper (which we repeat here) shows a binary tree.
+ a binary tree. A binary tree is a data structure composed of nodes. One node is designated as the root node. Each node can reference (point
+ to) zero, one, or two other nodes, which are called its children. The children are referred to as the left child and/or the right child.
+ All nodes are reachable (by one or more steps) from the root node, and there are no cycles. For our purposes, although this is not 
+ part of the definition of a binary tree, we will say that a node might or might not be a goal node, and will contain its name. The 
+ first example in this paper (which we repeat here) shows a binary tree.
                
-      Here's a definition of the BinaryTree class:
+ Here's a definition of the BinaryTree class:
 
-          </pre
-    >
+          </pre>
     <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 25px;">
              public class BinaryTree { 
               BinaryTree leftChild = null; 
@@ -323,19 +326,19 @@
 
       <h3>What are the children?</h3>
            <pre style="font-size: 18px; color: #858585;">
-          One of the things that simplifies the above binary tree search is that, at each choice point, you can ignore all the previous 
-          choices. Previous choices don't give you any information about what you should do next; as far as you know, both the left and the 
-          right child are possible solutions. In many problems, however, you may be able to eliminate children immediately, without 
-          recursion.
+  One of the things that simplifies the above binary tree search is that, at each choice point, you can ignore all the previous 
+  choices. Previous choices don't give you any information about what you should do next; as far as you know, both the left and the 
+  right child are possible solutions. In many problems, however, you may be able to eliminate children immediately, without 
+  recursion.
             
-          Consider, for example, the problem of four-coloring a map. It is a theorem of mathematics that any map on a plane, no matter 
-          how convoluted the countries are, can be colored with at most four colors, so that no two countries that share a border are the
-          same color. 
+  Consider, for example, the problem of four-coloring a map. It is a theorem of mathematics that any map on a plane, no matter 
+  how convoluted the countries are, can be colored with at most four colors, so that no two countries that share a border are the
+  same color. 
             
-          To color a map, you choose a color for the first country, then a color for the second country, and so on, until all countries are 
-          colored. 
+  To color a map, you choose a color for the first country, then a color for the second country, and so on, until all countries are 
+  colored. 
             
-          There are two ways to do this:
+  There are two ways to do this:
            </pre>
            <ol type="1" style="font-size: 18; color: #858585;">
        <li>Method 1. Try each of the four possible colors, and recur. When you run out of countries, check whether you are at a goal node.</li>
@@ -494,7 +497,7 @@
           
                   indent = indent.substring(3);
           
-                  System.out.println(indent + "solvable(" + name(node) + ") returns true"); return true; } static boolean no(BinaryTree node) { indent = indent.substring(3); System.out.println(indent + "solvable(" + name(node) + ") returns false");
+                  System.out.println(indent + "solvable(" + name(node) + ") returns true"); return true; } static boolean no(BinaryTree node)
                   return false;
             
                 }
@@ -552,15 +555,15 @@
           <h3>Trick #3: Never discard your debugging statements.</h3>
 
           <pre style="color: #858585; font-size: 18px;">
-            Writing debugging statements is programming, too. Often it's as much work to debug
-            the debugging statements as it is to debug the actual program. Once your program is working, why throw this code away?
+  Writing debugging statements is programming, too. Often it's as much work to debug
+  the debugging statements as it is to debug the actual program. Once your program is working, why throw this code away?
             
-            Obviously, you don't want to print out all this debugging information from a program you are ready to submit (or to turn over to
-            your manager). You could comment out your debugging calls, but that can be a lot of work. What's more, in the above example,
-            you would have to replace every return(yes(node)) with return(true), and every return(no(node)) with return false. With all these 
-            changes, you might introduce new bugs into your program.
+  Obviously, you don't want to print out all this debugging information from a program you are ready to submit (or to turn over to
+  your manager). You could comment out your debugging calls, but that can be a lot of work. What's more, in the above example,
+  you would have to replace every return(yes(node)) with return(true), and every return(no(node)) with return false. With all these 
+  changes, you might introduce new bugs into your program.
             
-            The simple solution is to make your debugging statements conditional. For example,
+  The simple solution is to make your debugging statements conditional. For example,
           </pre>
 
           <pre style="color: #007eb4; font-size: 18px; border: 1px solid black; border-radius: 15px; padding: 25px;">
@@ -782,34 +785,34 @@
 </table>
    </center>
         <pre style="color: #858585; font-size: 18px;">
-       The backtracking method is named solvable and returns a boolean. In solvable we shall need to check whether we are at a leaf,
-        which in this case means a position from which no further moves are possible. This isn't so easy. 
+ The backtracking method is named solvable and returns a boolean. In solvable we shall need to check whether we are at a leaf,
+ which in this case means a position from which no further moves are possible. This isn't so easy. 
 
-        Now to the program. The main program will initialize the board, and call a recursive backtracking routine to attempt to solve the
-        puzzle. The backtracking routine will either succeed and print out a winning path, or it will fail, and the main program will have to
-        print out the bad news.
+ Now to the program. The main program will initialize the board, and call a recursive backtracking routine to attempt to solve the
+ puzzle. The backtracking routine will either succeed and print out a winning path, or it will fail, and the main program will have to
+ print out the bad news.
         
-        he backtracking method is named solvable and returns a boolean. In solvable we shall need to check whether we are at a leaf,
-        which in this case means a position from which no further moves are possible. This isn't so easy.
+ he backtracking method is named solvable and returns a boolean. In solvable we shall need to check whether we are at a leaf,
+ which in this case means a position from which no further moves are possible. This isn't so easy.
         
-        Each possible move will result in a new board position, and these new board positions are the children of the current board
-        position. Hence to find the children of a node (that is, of a board position), we need only find the possible moves from that node.
-        Remember that it is also highly desirable to find an ordering on these possible moves.
+ Each possible move will result in a new board position, and these new board positions are the children of the current board
+ position. Hence to find the children of a node (that is, of a board position), we need only find the possible moves from that node.
+ Remember that it is also highly desirable to find an ordering on these possible moves.
         
-        Here it is time to stop and take thought. To make progress, we must analyze the game to some extent. Probably a number of
-        approaches would work, and what follows is based on the way I worked it out. If you were to program this puzzle, you might find
-        a different but equally valid approach. 
+ Here it is time to stop and take thought. To make progress, we must analyze the game to some extent. Probably a number of
+ approaches would work, and what follows is based on the way I worked it out. If you were to program this puzzle, you might find
+ a different but equally valid approach. 
         
-        First, notice that if a marble has a move, that move is unique: if it can move ahead one square, then it cannot jump. If it can jump,
-        it cannot move ahead one square. This suggests that, to find the possible moves, we might assign numbers to the marbles, and
-        check each marble in turn. When we have looked at all the marbles, we have looked at all the possible moves. This would require 
-        having a table to keep track of where each marble is, or else somehow "marking" each marble with its number and searching the 
-        board each time to find the marble we want. Neither alternative is very attractive. 
+ First, notice that if a marble has a move, that move is unique: if it can move ahead one square, then it cannot jump. If it can jump,
+ it cannot move ahead one square. This suggests that, to find the possible moves, we might assign numbers to the marbles, and
+ check each marble in turn. When we have looked at all the marbles, we have looked at all the possible moves. This would require 
+ having a table to keep track of where each marble is, or else somehow "marking" each marble with its number and searching the 
+ board each time to find the marble we want. Neither alternative is very attractive. 
         
-        Next, notice that for a given board position, each marble occupies a unique space. Hence, instead of talking about moving a 
-        particular marble, we can talk about moving the marble in a particular space. If a move is possible from a given space, then that 
-        must be the only move possible from that space, because if the marble in that space has a move, it is unique. There is a slight 
-        complication because not every space contains a marble, but at least the spaces (unlike the marbles) stay in one place.
+ Next, notice that for a given board position, each marble occupies a unique space. Hence, instead of talking about moving a 
+ particular marble, we can talk about moving the marble in a particular space. If a move is possible from a given space, then that 
+ must be the only move possible from that space, because if the marble in that space has a move, it is unique. There is a slight 
+ complication because not every space contains a marble, but at least the spaces (unlike the marbles) stay in one place.
         </pre>
 
         <pre style="color: #424242; font-size: 18px;">
@@ -825,13 +828,13 @@
           </ul>
 
           <pre style="color: #858585; font-size: 18px;">
-            We write another method <strong>int[] makeMove(int[] oldBoard, int position)</strong>  that will take a board and a position, make a move from 
-            that position, and return as its value a new board. (We could write this somewhat more efficiently by changing the old board, 
-            rather than creating a new one, but here we are more concerned with simplicity.) In technical jargon, makeMove is "applicative" 
-            rather than "mutative." 
+        We write another method <strong>int[] makeMove(int[] oldBoard, int position)</strong>  that will take a board and a position, make a move from 
+        that position, and return as its value a new board. (We could write this somewhat more efficiently by changing the old board, 
+        rather than creating a new one, but here we are more concerned with simplicity.) In technical jargon, makeMove is "applicative" 
+        rather than "mutative." 
             
-            Along with canMove and makeMove, we are using methods puzzleSolved and printBoard with meanings that
-            should be obvious. 
+        Along with canMove and makeMove, we are using methods puzzleSolved and printBoard with meanings that
+        should be obvious. 
             
           </pre>
           
@@ -855,9 +858,9 @@
           </pre>
 
           <pre style="color: black; font-size: 18px;">
-            Along with canMove and makeMove, we are using methods puzzleSolved and printBoard with meanings that should be obvious. 
+      Along with canMove and makeMove, we are using methods puzzleSolved and printBoard with meanings that should be obvious. 
             
-            Here is some output from the program:
+      Here is some output from the program:
           </pre>
           <ol reversed style="font-size: 18px; color: #007eb4;">
             <li>
@@ -911,13 +914,13 @@
           </ol>
           
       
-          <pre style="color: #858585; font-size: 20px; border: 1px #EDEDED; border-radius: 10px; background-color: #F8F8F8; width: 96%; padding: 10px;">
+      <pre style="color: #858585; font-size: 20px; border: 1px #EDEDED; border-radius: 10px; background-color: #F8F8F8; width: 96%; padding: 10px;">
       
-      Notice that the solution is given in reverse order: BLACK starts out on the left and WHITE on the right, as in the last
-      line. I've added line numbers to the actual output in order to emphasize this point. Backtracking always produces its 
-      results (sequence of choices) in reverse order; it is up to you, the programmer, to reverse the results again to get 
-      them in the correct order.
-        </pre>
+  Notice that the solution is given in reverse order: BLACK starts out on the left and WHITE on the right, as in the last
+  line. I've added line numbers to the actual output in order to emphasize this point. Backtracking always produces its 
+  results (sequence of choices) in reverse order; it is up to you, the programmer, to reverse the results again to get 
+  them in the correct order.
+      </pre>
       
   </body>
 </html>
